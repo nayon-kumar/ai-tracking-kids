@@ -5,15 +5,6 @@ import heroPhones from "@/public/assets/hero-mobile.png";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_90%_75%_at_50%_58%,rgba(129,140,248,0.5),rgba(165,158,240,0.22)_45%,transparent_78%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_30%_at_50%_8%,rgba(165,158,240,0.3),transparent_70%)]"
-      />
-
       <div className="mx-auto max-w-4xl px-4 pt-16 text-center sm:pt-24">
         <Link
           href="#"
