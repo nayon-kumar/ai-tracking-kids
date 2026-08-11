@@ -1,10 +1,11 @@
 import Image from "next/image";
 import lockGraphic from "@/public/assets/lock.png";
+import Reveal from "@/components/motion/Reveal";
 
 export default function PrivacySecurity() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-      <div className="relative overflow-hidden rounded-3xl bg-[linear-gradient(160deg,#392c86_0%,#201653_55%,#0d0a24_100%)] px-6 pt-10 pb-12 sm:px-12 sm:pt-14">
+      <Reveal className="relative overflow-hidden rounded-3xl bg-[linear-gradient(160deg,#392c86_0%,#201653_55%,#0d0a24_100%)] px-6 pt-10 pb-12 sm:px-12 sm:pt-14">
         <div className="mx-auto w-full max-w-2xl">
           <Image
             src={lockGraphic}
@@ -25,7 +26,7 @@ export default function PrivacySecurity() {
             With Total Peace Of Mind.
           </p>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

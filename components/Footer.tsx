@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/assets/logo.png";
+import Reveal from "@/components/motion/Reveal";
+import HoverLift from "@/components/motion/HoverLift";
 
 const COMMUNITY_AVATARS = [
   { initials: "JD", className: "bg-indigo-200 text-indigo-700" },
@@ -162,7 +164,7 @@ export default function Footer() {
           className="pointer-events-none absolute top-1/2 right-0 h-[300px] w-[300px] -translate-y-1/2 translate-x-1/4 rounded-full border border-white/20"
         />
 
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-8 lg:px-12">
+        <Reveal className="relative mx-auto max-w-6xl px-4 sm:px-8 lg:px-12">
           <div className="flex -space-x-2">
             {COMMUNITY_AVATARS.map((avatar) => (
               <span
@@ -183,24 +185,28 @@ export default function Footer() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Link
-              href="#"
-              className="rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-950/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-xl active:translate-y-0"
-            >
-              Start Free Trial
-            </Link>
-            <Link
-              href="#"
-              className="rounded-full border border-white/80 px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
-            >
-              Explore The App
-            </Link>
+            <HoverLift lift={3} scale={1.04}>
+              <Link
+                href="#"
+                className="inline-block rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-950/20 transition-colors duration-200 hover:bg-indigo-700 hover:shadow-xl"
+              >
+                Start Free Trial
+              </Link>
+            </HoverLift>
+            <HoverLift lift={3} scale={1.04}>
+              <Link
+                href="#"
+                className="inline-block rounded-full border border-white/80 px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+              >
+                Explore The App
+              </Link>
+            </HoverLift>
           </div>
-        </div>
+        </Reveal>
       </div>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-8 lg:px-12">
-        <div className="relative z-10 -mt-32 rounded-3xl border-2 border-white bg-indigo-50 p-8 shadow-xl sm:-mt-36 sm:p-10">
+        <Reveal className="relative z-10 -mt-32 rounded-3xl border-2 border-white bg-indigo-50 p-8 shadow-xl sm:-mt-36 sm:p-10">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1fr]">
           <div>
             <Image src={logo} alt="Growth Genius" className="h-8 w-auto" />
@@ -263,14 +269,15 @@ export default function Footer() {
         <div className="mt-6 flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-3">
             {SOCIAL_ICONS.map(({ label, Icon }) => (
-              <Link
-                key={label}
-                href="#"
-                aria-label={label}
-                className="flex h-9 w-9 items-center justify-center rounded-full text-indigo-600 transition-colors hover:bg-indigo-100"
-              >
-                <Icon />
-              </Link>
+              <HoverLift key={label} lift={2} scale={1.15}>
+                <Link
+                  href="#"
+                  aria-label={label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-indigo-600 transition-colors hover:bg-indigo-100"
+                >
+                  <Icon />
+                </Link>
+              </HoverLift>
             ))}
           </div>
           <p className="flex items-center gap-1.5 text-sm text-slate-600">
@@ -280,7 +287,7 @@ export default function Footer() {
             2025 GrowthGenius. All rights reserved.
           </p>
         </div>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );

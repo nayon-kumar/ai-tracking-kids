@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import lucyRobot from "@/public/assets/big-robot.png";
+import Reveal from "@/components/motion/Reveal";
+import HoverLift from "@/components/motion/HoverLift";
 
 const SAMPLE_QUESTIONS = [
   { text: "Is my 10-month-old crawling on track?", offset: "lg:ml-0" },
@@ -18,7 +20,7 @@ const AVATARS = [
 export default function LucyAi() {
   return (
     <section className="relative mx-auto max-w-6xl px-4 py-20 sm:py-28">
-      <div className="mx-auto max-w-2xl text-center">
+      <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
           Meet <span className="text-indigo-600">Lucy AI,</span>
           <br />
@@ -29,17 +31,19 @@ export default function LucyAi() {
           concerns. Lucy gives evidence-based, pediatric-backed answers
           instantly.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-16 grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_auto_1fr] lg:gap-6">
-        <div className="mx-auto hidden w-full max-w-xs flex-col items-start gap-4 lg:mx-0 lg:flex">
+        <Reveal
+          direction="left"
+          className="mx-auto hidden w-full max-w-xs flex-col items-start gap-4 lg:mx-0 lg:flex"
+        >
           {SAMPLE_QUESTIONS.map((question) => (
-            <span
-              key={question.text}
-              className={`rounded-full border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm backdrop-blur ${question.offset}`}
-            >
-              {question.text}
-            </span>
+            <HoverLift key={question.text} lift={2} scale={1.03} className={question.offset}>
+              <span className="block rounded-full border border-slate-200/80 bg-white/80 px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm backdrop-blur">
+                {question.text}
+              </span>
+            </HoverLift>
           ))}
 
           <div className="mt-2 rounded-2xl bg-white/60 p-4">
@@ -67,15 +71,17 @@ export default function LucyAi() {
             </div>
           </div>
 
-          <Link
-            href="#"
-            className="rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-xl active:translate-y-0"
-          >
-            Start Free Trial
-          </Link>
-        </div>
+          <HoverLift lift={3} scale={1.04}>
+            <Link
+              href="#"
+              className="inline-block rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-colors duration-200 hover:bg-indigo-700 hover:shadow-xl"
+            >
+              Start Free Trial
+            </Link>
+          </HoverLift>
+        </Reveal>
 
-        <div className="relative mx-auto flex h-[320px] w-[280px] items-center justify-center">
+        <Reveal delay={0.15} className="relative mx-auto flex h-[320px] w-[280px] items-center justify-center">
           <div
             aria-hidden
             className="absolute h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle,rgba(129,140,248,0.35),transparent_70%)] blur-2xl"
@@ -94,9 +100,13 @@ export default function LucyAi() {
             className="relative z-10 h-auto w-[220px] select-none"
             preload
           />
-        </div>
+        </Reveal>
 
-        <div className="mx-auto hidden w-full max-w-sm rounded-3xl bg-white p-4 shadow-xl shadow-indigo-950/5 ring-1 ring-slate-100 lg:block">
+        <Reveal
+          direction="right"
+          delay={0.1}
+          className="mx-auto hidden w-full max-w-sm rounded-3xl bg-white p-4 shadow-xl shadow-indigo-950/5 ring-1 ring-slate-100 lg:block"
+        >
           <div className="rounded-2xl rounded-tl-sm bg-indigo-50 p-4 text-sm text-slate-700">
             At 4 months, many babies experience sleep regression due to
             developing sleep cycles. Try establishing a consistent bedtime
@@ -118,7 +128,7 @@ export default function LucyAi() {
             Stop generating...
             <span className="h-3 w-3 animate-spin rounded-full border-2 border-slate-400 border-t-transparent" />
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

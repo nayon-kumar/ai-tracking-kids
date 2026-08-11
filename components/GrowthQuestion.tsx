@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import growthPhones from "@/public/assets/mobile.png";
+import Reveal from "@/components/motion/Reveal";
+import HoverLift from "@/components/motion/HoverLift";
 
 const QUESTIONS = [
   "Is my child on track?",
@@ -46,16 +48,16 @@ export default function GrowthQuestion() {
         />
 
         <div className="relative grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="relative mx-auto w-full max-w-sm self-end sm:max-w-md lg:-mb-14">
+          <Reveal direction="left" className="relative mx-auto w-full max-w-sm self-end sm:max-w-md lg:-mb-14">
             <Image
               src={growthPhones}
               alt="GrowthGenius app screens showing daily moments and the child's growth chart"
               className="mx-auto h-auto w-full select-none"
               preload
             />
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal direction="right" delay={0.1}>
             <h2 className="text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-[2.15rem] lg:leading-tight">
               Every Parent&rsquo;s Biggest Question:
               <br />
@@ -81,14 +83,16 @@ export default function GrowthQuestion() {
             </p>
 
             <div className="mt-8 flex justify-center lg:justify-start">
-              <Link
-                href="#"
-                className="inline-flex items-center rounded-full bg-white/15 px-7 py-3.5 text-sm font-semibold text-white shadow-lg backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/25 active:translate-y-0"
-              >
-                See How It Works
-              </Link>
+              <HoverLift lift={3} scale={1.04}>
+                <Link
+                  href="#"
+                  className="inline-flex items-center rounded-full bg-white/15 px-7 py-3.5 text-sm font-semibold text-white shadow-lg backdrop-blur transition-colors duration-200 hover:bg-white/25"
+                >
+                  See How It Works
+                </Link>
+              </HoverLift>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import logo from "@/public/assets/logo.png";
 
@@ -102,35 +103,45 @@ export default function Navbar() {
           </button>
         </nav>
 
-        {isMenuOpen && (
-          <div className="mt-2 flex flex-col gap-1 rounded-xl bg-white p-4 md:hidden">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => {
-                  setActiveHref(link.href);
-                  setIsMenuOpen(false);
-                }}
-                className={`rounded-lg px-3 py-2 text-sm font-medium ${
-                  activeHref === link.href
-                    ? "bg-indigo-50 text-indigo-600"
-                    : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="#"
-              onClick={() => setIsMenuOpen(false)}
-              className="mt-2 inline-flex items-center justify-center gap-1 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden md:hidden"
             >
-              Get Started
-              <span aria-hidden>&rsaquo;</span>
-            </Link>
-          </div>
-        )}
+              <div className="mt-2 flex flex-col gap-1 rounded-xl bg-white p-4">
+                {NAV_LINKS.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => {
+                      setActiveHref(link.href);
+                      setIsMenuOpen(false);
+                    }}
+                    className={`rounded-lg px-3 py-2 text-sm font-medium ${
+                      activeHref === link.href
+                        ? "bg-indigo-50 text-indigo-600"
+                        : "text-slate-700 hover:bg-slate-50 hover:text-indigo-600"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <Link
+                  href="#"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="mt-2 inline-flex items-center justify-center gap-1 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
+                >
+                  Get Started
+                  <span aria-hidden>&rsaquo;</span>
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

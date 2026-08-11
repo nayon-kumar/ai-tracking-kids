@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import motherBaby from "@/public/assets/mother.png";
+import Reveal from "@/components/motion/Reveal";
 
 const TESTIMONIALS = [
   {
@@ -80,11 +82,9 @@ export default function Testimonials() {
   const showNext = () =>
     goTo((current) => (current + 1) % TESTIMONIALS.length);
 
-  const testimonial = TESTIMONIALS[index];
-
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-3xl text-center">
+      <Reveal className="mx-auto max-w-3xl text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
           Discover Why Thousands Of Parents Trust Us
           <br />
@@ -96,54 +96,64 @@ export default function Testimonials() {
           GrowthGenius - the trusted tool for tracking your child&rsquo;s
           growth and milestones.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-14 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
-        <div className="mx-auto w-full max-w-md">
+        <Reveal direction="left" className="mx-auto w-full max-w-md">
           <Image
             src={motherBaby}
             alt="A smiling mother embracing her baby, next to a card showing GrowthGenius stats: 10,000+ moments created, 1,300+ validated milestones, backed by pediatric research, and a 4.9 rating from more than 10,000 parents"
             className="h-auto w-full select-none"
             preload
           />
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal direction="right" delay={0.1}>
           <QuoteIcon />
-          <div
-            className={`transition-all duration-[400ms] ease-in-out ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "-translate-y-1 opacity-0"
-            }`}
-          >
-            <p className="mt-4 min-h-[9rem] text-xl font-medium text-slate-800 sm:text-2xl lg:leading-snug">
-              {testimonial.quote}
-            </p>
-            <p className="mt-6 text-base font-semibold text-slate-900">
-              {testimonial.name}
-            </p>
+          <div className="mt-4 grid">
+            {TESTIMONIALS.map((t, i) => (
+              <div
+                key={t.name}
+                aria-hidden={i !== index}
+                className={`col-start-1 row-start-1 transition-all duration-[400ms] ease-in-out ${
+                  i === index && isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "pointer-events-none -translate-y-1 opacity-0"
+                }`}
+              >
+                <p className="text-xl font-medium text-slate-800 sm:text-2xl lg:leading-snug">
+                  {t.quote}
+                </p>
+                <p className="mt-6 text-base font-semibold text-slate-900">
+                  {t.name}
+                </p>
+              </div>
+            ))}
           </div>
 
           <div className="mt-8 flex items-center justify-end gap-3">
-            <button
+            <motion.button
               type="button"
               onClick={showPrevious}
               aria-label="Previous testimonial"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.92 }}
               className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 text-indigo-400 transition-colors hover:bg-indigo-200"
             >
               <ChevronIcon direction="left" />
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               type="button"
               onClick={showNext}
               aria-label="Next testimonial"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.92 }}
               className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white transition-colors hover:bg-indigo-700"
             >
               <ChevronIcon direction="right" />
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

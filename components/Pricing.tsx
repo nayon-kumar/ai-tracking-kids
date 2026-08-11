@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Reveal from "@/components/motion/Reveal";
+import HoverLift from "@/components/motion/HoverLift";
 
 type Billing = "monthly" | "annually";
 
@@ -84,7 +86,7 @@ export default function Pricing() {
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-2xl text-center">
+      <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
           Simple, Transparent, And Flexible Pricing
           <br />
@@ -96,7 +98,7 @@ export default function Pricing() {
           affordable annual plans. Choose the plan that fits your parenting
           journey.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-8 flex justify-center">
         <div className="inline-flex items-center gap-1 rounded-full bg-indigo-50 p-1">
@@ -126,102 +128,114 @@ export default function Pricing() {
       </div>
 
       <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:items-stretch">
-        <div className="flex h-full flex-col rounded-3xl bg-[linear-gradient(135deg,#fbfaff_0%,#e4e0fb_55%,#d1c9f2_100%)] p-8 shadow-sm">
-          <h3 className="text-xl font-bold text-slate-900">Free Package</h3>
-          <p className="mt-2 text-sm text-slate-600">
-            Experience the full app features with no commitment.
-          </p>
+        <Reveal delay={0} className="h-full">
+          <HoverLift lift={6} scale={1.015} className="h-full">
+            <div className="flex h-full flex-col rounded-3xl bg-[linear-gradient(135deg,#fbfaff_0%,#e4e0fb_55%,#d1c9f2_100%)] p-8 shadow-sm transition-shadow duration-300 hover:shadow-xl">
+              <h3 className="text-xl font-bold text-slate-900">Free Package</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Experience the full app features with no commitment.
+              </p>
 
-          <div className="mt-6 flex items-baseline gap-2">
-            <span className="text-4xl font-extrabold text-slate-900">$0</span>
-            <span className="text-sm text-slate-500">7 Days Free Trial</span>
-          </div>
+              <div className="mt-6 flex items-baseline gap-2">
+                <span className="text-4xl font-extrabold text-slate-900">$0</span>
+                <span className="text-sm text-slate-500">7 Days Free Trial</span>
+              </div>
 
-          <hr className="mt-6 border-slate-200" />
+              <hr className="mt-6 border-slate-200" />
 
-          <p className="mt-6 text-sm font-semibold text-slate-900">
-            Core Features:
-          </p>
-          <div className="mt-3">
-            <FeatureList features={FREE_FEATURES} tone="dark" />
-          </div>
+              <p className="mt-6 text-sm font-semibold text-slate-900">
+                Core Features:
+              </p>
+              <div className="mt-3">
+                <FeatureList features={FREE_FEATURES} tone="dark" />
+              </div>
 
-          <Link
-            href="#"
-            className="mt-8 flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-xl active:translate-y-0 lg:mt-auto"
-          >
-            Start Free Trial
-          </Link>
-        </div>
+              <Link
+                href="#"
+                className="mt-8 flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-colors duration-200 hover:bg-indigo-700 hover:shadow-xl lg:mt-auto"
+              >
+                Start Free Trial
+              </Link>
+            </div>
+          </HoverLift>
+        </Reveal>
 
-        <div className="relative flex h-full flex-col rounded-3xl bg-[linear-gradient(135deg,#8c7ee9_0%,#6c5ce6_50%,#5548d4_100%)] p-8 shadow-xl lg:-my-4 lg:py-12">
-          <span className="absolute top-6 left-1/2 -translate-x-1/2 rounded-full bg-white px-4 py-1 text-xs font-semibold text-slate-900">
-            Most Popular
-          </span>
+        <Reveal delay={0.1} className="h-full">
+          <HoverLift lift={6} scale={1.015} className="h-full">
+            <div className="relative flex h-full flex-col rounded-3xl bg-[linear-gradient(135deg,#8c7ee9_0%,#6c5ce6_50%,#5548d4_100%)] p-8 shadow-xl transition-shadow duration-300 hover:shadow-2xl lg:-my-4 lg:py-12">
+              <span className="absolute top-6 left-1/2 -translate-x-1/2 rounded-full bg-white px-4 py-1 text-xs font-semibold text-slate-900">
+                Most Popular
+              </span>
 
-          <h3 className="mt-4 text-xl font-bold text-white">
-            GrowthGenius Package
-          </h3>
-          <p className="mt-2 text-sm text-white/80">
-            Everything you need to support your child&rsquo;s growth with
-            advanced features.
-          </p>
+              <h3 className="mt-4 text-xl font-bold text-white">
+                GrowthGenius Package
+              </h3>
+              <p className="mt-2 text-sm text-white/80">
+                Everything you need to support your child&rsquo;s growth with
+                advanced features.
+              </p>
 
-          <div className="mt-6 flex items-baseline gap-2">
-            <span className="text-4xl font-extrabold text-white">
-              {growthPrice.amount}
-            </span>
-            <span className="text-sm text-white/80">{growthPrice.period}</span>
-          </div>
+              <div className="mt-6 flex items-baseline gap-2">
+                <span className="text-4xl font-extrabold text-white">
+                  {growthPrice.amount}
+                </span>
+                <span className="text-sm text-white/80">{growthPrice.period}</span>
+              </div>
 
-          <hr className="mt-6 border-white/20" />
+              <hr className="mt-6 border-white/20" />
 
-          <p className="mt-6 text-sm font-semibold text-white">
-            Core Features:
-          </p>
-          <div className="mt-3">
-            <FeatureList features={GROWTH_FEATURES} tone="light" />
-          </div>
+              <p className="mt-6 text-sm font-semibold text-white">
+                Core Features:
+              </p>
+              <div className="mt-3">
+                <FeatureList features={GROWTH_FEATURES} tone="light" />
+              </div>
 
-          <Link
-            href="#"
-            className="mt-8 flex items-center justify-center rounded-full bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800 active:translate-y-0 lg:mt-auto"
-          >
-            Get Started
-          </Link>
-        </div>
+              <Link
+                href="#"
+                className="mt-8 flex items-center justify-center rounded-full bg-slate-900 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors duration-200 hover:bg-slate-800 lg:mt-auto"
+              >
+                Get Started
+              </Link>
+            </div>
+          </HoverLift>
+        </Reveal>
 
-        <div className="flex h-full flex-col rounded-3xl bg-[linear-gradient(135deg,#fbfaff_0%,#e4e0fb_55%,#d1c9f2_100%)] p-8 shadow-sm">
-          <h3 className="text-xl font-bold text-slate-900">
-            Annual Package
-          </h3>
-          <p className="mt-2 text-sm text-slate-600">
-            The most affordable plan with premium access for tracking.
-          </p>
+        <Reveal delay={0.2} className="h-full">
+          <HoverLift lift={6} scale={1.015} className="h-full">
+            <div className="flex h-full flex-col rounded-3xl bg-[linear-gradient(135deg,#fbfaff_0%,#e4e0fb_55%,#d1c9f2_100%)] p-8 shadow-sm transition-shadow duration-300 hover:shadow-xl">
+              <h3 className="text-xl font-bold text-slate-900">
+                Annual Package
+              </h3>
+              <p className="mt-2 text-sm text-slate-600">
+                The most affordable plan with premium access for tracking.
+              </p>
 
-          <div className="mt-6 flex items-baseline gap-2">
-            <span className="text-4xl font-extrabold text-slate-900">
-              $59.99
-            </span>
-            <span className="text-sm text-slate-500">Yearly</span>
-          </div>
+              <div className="mt-6 flex items-baseline gap-2">
+                <span className="text-4xl font-extrabold text-slate-900">
+                  $59.99
+                </span>
+                <span className="text-sm text-slate-500">Yearly</span>
+              </div>
 
-          <hr className="mt-6 border-slate-200" />
+              <hr className="mt-6 border-slate-200" />
 
-          <p className="mt-6 text-sm font-semibold text-slate-900">
-            Core Features:
-          </p>
-          <div className="mt-3">
-            <FeatureList features={ANNUAL_FEATURES} tone="dark" />
-          </div>
+              <p className="mt-6 text-sm font-semibold text-slate-900">
+                Core Features:
+              </p>
+              <div className="mt-3">
+                <FeatureList features={ANNUAL_FEATURES} tone="dark" />
+              </div>
 
-          <Link
-            href="#"
-            className="mt-8 flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-xl active:translate-y-0 lg:mt-auto"
-          >
-            Start Annual
-          </Link>
-        </div>
+              <Link
+                href="#"
+                className="mt-8 flex items-center justify-center rounded-full bg-indigo-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-colors duration-200 hover:bg-indigo-700 hover:shadow-xl lg:mt-auto"
+              >
+                Start Annual
+              </Link>
+            </div>
+          </HoverLift>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,5 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/motion/Reveal";
+import HoverLift from "@/components/motion/HoverLift";
 import lucyRobot from "@/public/assets/small-robot.png";
 import milestonesCube from "@/public/assets/8021f0a1-6d7e-4177-9db4-9e154814f6c4.png";
 import growthTape from "@/public/assets/fita.png";
@@ -62,7 +64,7 @@ const FEATURES: Feature[] = [
 export default function Features() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-      <div className="mx-auto max-w-2xl text-center">
+      <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
           Unlock Your Child&rsquo;s Full Potential With{" "}
           <span className="text-indigo-600">GrowthGenius</span>
@@ -72,53 +74,56 @@ export default function Features() {
           parenting journey with personalized insights, expert guidance, and
           the support you need at every milestone.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {FEATURES.map((feature) => (
-          <div
-            key={feature.title}
-            className="relative overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#eef0fc_0%,#c7c9f4_55%,#9498e6_100%)] p-6"
-          >
-            <div className="relative z-10 max-w-[62%]">
-              <h3 className="text-base leading-snug font-bold text-slate-900">
-                {feature.title}
-              </h3>
-              <p className="mt-2 text-sm text-slate-600">
-                {feature.description}
-              </p>
-            </div>
-            {feature.cropped ? (
-              <div
-                aria-hidden
-                className={`pointer-events-none absolute overflow-hidden rounded-2xl ${feature.imageClassName}`}
-              >
-                <Image
-                  src={feature.image}
-                  alt=""
-                  fill
-                  className="scale-125 object-cover object-[50%_38%] select-none"
-                />
+        {FEATURES.map((feature, index) => (
+          <Reveal key={feature.title} delay={(index % 3) * 0.1} amount={0.2}>
+            <HoverLift lift={8} scale={1.02} className="h-full">
+              <div className="relative h-full overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#eef0fc_0%,#c7c9f4_55%,#9498e6_100%)] p-6 shadow-sm transition-shadow duration-300 hover:shadow-xl hover:shadow-indigo-950/10">
+                <div className="relative z-10 max-w-[62%]">
+                  <h3 className="text-base leading-snug font-bold text-slate-900">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-600">
+                    {feature.description}
+                  </p>
+                </div>
+                {feature.cropped ? (
+                  <div
+                    aria-hidden
+                    className={`pointer-events-none absolute overflow-hidden rounded-2xl ${feature.imageClassName}`}
+                  >
+                    <Image
+                      src={feature.image}
+                      alt=""
+                      fill
+                      className="scale-125 object-cover object-[50%_38%] select-none"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    src={feature.image}
+                    alt=""
+                    aria-hidden
+                    className={`pointer-events-none absolute object-contain select-none ${feature.imageClassName}`}
+                  />
+                )}
               </div>
-            ) : (
-              <Image
-                src={feature.image}
-                alt=""
-                aria-hidden
-                className={`pointer-events-none absolute object-contain select-none ${feature.imageClassName}`}
-              />
-            )}
-          </div>
+            </HoverLift>
+          </Reveal>
         ))}
       </div>
 
       <div className="mt-12 flex justify-center">
-        <Link
-          href="#"
-          className="rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-xl active:translate-y-0"
-        >
-          Start Free Trial
-        </Link>
+        <HoverLift lift={3} scale={1.04}>
+          <Link
+            href="#"
+            className="inline-block rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-600/25 transition-colors duration-200 hover:bg-indigo-700 hover:shadow-xl"
+          >
+            Start Free Trial
+          </Link>
+        </HoverLift>
       </div>
     </section>
   );
