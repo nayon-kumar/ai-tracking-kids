@@ -116,7 +116,7 @@ function StepText({ step }: { step: Step }) {
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute -top-8 left-0 -z-10 text-[5.5rem] leading-none font-black text-slate-100 select-none sm:-top-10 sm:text-[7.5rem]"
+        className="pointer-events-none absolute -top-8 left-0 -z-10 text-[5.5rem] leading-none font-black text-indigo-100 select-none sm:-top-10 sm:text-[7.5rem]"
       >
         {step.number}
       </span>
