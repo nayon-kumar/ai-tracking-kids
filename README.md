@@ -1,6 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GrowthGenius
 
-## Getting Started
+GrowthGenius is a marketing landing page for a child growth and development
+tracking app. It helps parents monitor milestones, get AI-powered parenting
+guidance, and share their child's special moments with family.
+
+---
+
+## 🚀 Live Demo
+
+
+👉 https://ai-tracking-kids.vercel.app
+
+---
+
+## ✨ Features
+
+- **Hero & Onboarding CTA** - Introduces the app with a quick-start call to
+  action and a floating phone mockup showcase.
+- **Lucy AI Assistant** - A dedicated section highlighting the AI parenting
+  assistant that answers questions about milestones, sleep, feeding, and
+  development.
+- **Growth Question Callout** - Addresses common parenting concerns with a
+  research-backed messaging block.
+- **Feature Grid** - Six-card overview of core product capabilities
+  (milestones, growth tracking, daily tips, family syncing, and security).
+- **How It Works** - A four-step walkthrough (profile setup, milestone
+  tracking, Lucy AI guidance, and moment sharing) with alternating image and
+  text layout.
+- **Testimonials** - Auto-rotating parent testimonials with manual
+  navigation controls.
+- **Pricing Plans** - Free, monthly, and annual pricing tiers with a
+  billing-period toggle.
+- **Privacy & Security** - Highlights COPPA/GDPR compliance, encryption, and
+  data-control commitments.
+- **Responsive Navbar & Footer** - Sticky animated navigation and a footer
+  with newsletter signup, quick links, and social channels.
+- **Scroll Animations** - Reveal and hover-lift motion effects throughout
+  the page for a polished feel.
+
+## 🛠️ Technologies Used
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- ESLint
+
+## 📌 Getting Started
 
 First, run the development server:
 
@@ -14,23 +61,6 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see
+the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
