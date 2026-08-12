@@ -3,6 +3,7 @@ import LucyAi from "@/components/LucyAi";
 import GrowthQuestion from "@/components/GrowthQuestion";
 import Features from "@/components/Features";
 import Testimonials from "@/components/Testimonials";
+import HowItWorks from "@/components/HowItWorks";
 import Pricing from "@/components/Pricing";
 import PrivacySecurity from "@/components/PrivacySecurity";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <GrowthQuestion />
       <Features />
       <Testimonials />
+      <HowItWorks />
       <Pricing />
       <PrivacySecurity />
     </main>

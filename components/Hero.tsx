@@ -11,7 +11,7 @@ export default function Hero() {
         <Reveal amount={0}>
           <Link
             href="#"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 py-2 pr-4 pl-2.5 text-sm font-medium text-slate-700 shadow-sm backdrop-blur transition-colors hover:border-slate-300"
+            className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-slate-200/80 bg-white/80 py-1.5 pr-3 pl-2.5 text-xs font-medium text-slate-700 shadow-sm backdrop-blur transition-colors hover:border-slate-300 sm:py-1.5 sm:pr-3.5 sm:text-[13px]"
           >
             <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-950 text-white">
               <svg
@@ -27,8 +27,15 @@ export default function Hero() {
                 <path d="M20 6 9 17l-5-5" />
               </svg>
             </span>
-            Verified by professional, Created for Parents
-            <span aria-hidden>&rsaquo;</span>
+            <span className="truncate">
+              <span className="sm:hidden">Verified &amp; Parent-Approved</span>
+              <span className="hidden sm:inline">
+                Verified by professional, Created for Parents
+              </span>
+            </span>
+            <span aria-hidden className="shrink-0">
+              &rsaquo;
+            </span>
           </Link>
         </Reveal>
 

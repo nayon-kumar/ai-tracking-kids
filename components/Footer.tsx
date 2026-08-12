@@ -280,11 +280,8 @@ export default function Footer() {
               </HoverLift>
             ))}
           </div>
-          <p className="flex items-center gap-1.5 text-sm text-slate-600">
-            <span className="flex h-4 w-4 items-center justify-center rounded-full bg-indigo-600 text-[10px] text-white">
-              ©
-            </span>
-            2025 GrowthGenius. All rights reserved.
+          <p className="flex items-center justify-center gap-1.5 text-center text-sm text-slate-600">
+            © 2025 GrowthGenius. All rights reserved.
           </p>
         </div>
         </Reveal>
