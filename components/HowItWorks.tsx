@@ -116,11 +116,11 @@ function StepText({ step }: { step: Step }) {
     >
       <span
         aria-hidden
-        className="pointer-events-none absolute -top-8 left-0 -z-10 text-[5.5rem] leading-none font-black text-indigo-100 select-none sm:-top-10 sm:text-[7.5rem]"
+        className="pointer-events-none absolute -top-8 left-1/2 -z-10 -translate-x-1/2 text-[5.5rem] leading-none font-black text-indigo-100 select-none sm:-top-10 sm:text-[7.5rem] lg:left-0 lg:translate-x-0"
       >
         {step.number}
       </span>
-      <div className="relative">
+      <div className="relative text-center lg:text-left">
         <h3 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
           {step.title}
           {step.subtitle ? (
@@ -130,10 +130,10 @@ function StepText({ step }: { step: Step }) {
             </>
           ) : null}
         </h3>
-        <p className="mt-4 max-w-md text-base text-slate-600">
+        <p className="mx-auto mt-4 max-w-md text-base text-slate-600 lg:mx-0">
           {step.description}
         </p>
-        <div className="mt-8">
+        <div className="mt-8 flex justify-center lg:justify-start">
           <HoverLift lift={3} scale={1.04}>
             <Link
               href="#"
